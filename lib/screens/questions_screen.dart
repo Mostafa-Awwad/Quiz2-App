@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz2_app/Student%20Files/screens/result_screen.dart';
 import '../data/questions.dart';
 import '../widgets/question_item.dart';
 
@@ -6,14 +7,15 @@ class QuestionsScreen extends StatelessWidget {
   const QuestionsScreen({
     super.key,
     required this.onSelectAnswer,
+    required submit,
   });
-
+  
   final Function onSelectAnswer;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
+    return SingleChildScrollView(
+      padding: EdgeInsets.all(20),
       child: Column(
         children: [
           //asMap is a function that creates a map of the list.
@@ -24,12 +26,13 @@ class QuestionsScreen extends StatelessWidget {
 
             return QuestionItem(
               questionIndex: qIndex,
-              question: question,			  
+              question: question,
               onSelectAnswer: onSelectAnswer,
             );
           }),
 
           const SizedBox(height: 20),
+          ElevatedButton(onPressed: () => Submit, child: Text("submit")),
         ],
       ),
     );
